@@ -1,0 +1,35 @@
+/*
+	File chapter_8.3_exercises.c
+
+	Author: Yang JiHoon
+	Date: 2021-09-16
+	Course: Problem Solving Methods
+
+	Summary of File:
+		This file contains code which print numbers in array
+*/
+#include <stdio.h>
+/*
+	void show(float* rates)
+
+	Summary of the show function:
+		The show function, print number in array
+
+	Return value: Nothing
+
+	Description:
+		This function print number in rate array
+*/
+void show(float* rates);
+
+void main() {
+	float rates[10] = { 6.5,8.2,8.5,8.3,8.6,9.4,9.6,9.8,10.0 };  //declare array
+	/* execute function */
+	show(&rates);
+}
+
+void show(float* rates) {
+	int i;
+	for (i = 0; i < 9; i = i + 1)
+		printf("rates[%d] number is %f\n", i, rates[i]);  //print number in array
+}
