@@ -1,0 +1,64 @@
+﻿#include <stdio.h>
+/*
+	File: lab2.C
+
+	Author: Yang JiHoon
+	Date: 2021-09-15
+	Course: Problem Solving Methods
+
+	Summary of File:
+		This file contains code which computes and prints the total salaries of people.
+*/
+
+/*
+	void totpay(float[5], float[5], float[5])
+
+	Summary of the Calculate function:
+		The totpay function, sum base and overtime, then store to total.
+
+	Parameters:
+		array: containing floats
+
+	Description:
+		This function add base array and overtime array, then store to total array.
+*/
+void totpay(float[5], float[5], float[5]);
+
+/*
+	void main()
+
+	Summary of the main function:
+		The main function, get input numbers in array, then activate totpay function, print total array
+
+	Parameters:
+		for: input array
+
+	Description:
+		This function input numbers in base array and overtime array, activate totpay function and print result
+*/
+void main() {
+	/* declare base, overtime, total */
+	float base[5];
+	float overtime[5];
+	float total[5];
+	int i;
+	/* Input number in array */
+	for (i = 0; i < 5; i = i + 1) {
+		printf("enter base[%d] value: ", i);
+		scanf_s("%f", &base[i]);  //enter base[i]
+		printf("enter overtime[%d] value: ", i);
+		scanf_s("%f", &overtime[i]);  //enter overtime[i]
+	}
+	/* operate function */
+	totpay(base, overtime, total);
+	/* print total array */
+	for (i = 0; i < 5; i = i + 1)
+		printf("The total[%d] is %f\n", i, total[i]);
+}
+
+void totpay(float base[], float overtime[], float total[]) {
+	int i;
+	for (i = 0; i < 5; i = i + 1) {
+		total[i] = base[i] + overtime[i];  //add base array and overtime array, then store total array
+	}
+}
