@@ -1,0 +1,26 @@
+/*
+3a. Write a function named secs() that accepts the time in hours, minutes, and seconds;
+and determines the total number of seconds in the passed data.
+Write this function so that the total number of seconds is returned by the function as an integer number.
+*/
+
+#include <stdio.h>
+
+void secs(int* h, int* m, int* s);
+
+void main() {
+	int hours, minutes, seconds;
+	printf("enter hours: ");
+	scanf_s("%d", &hours);
+	printf("enter minutes: ");
+	scanf_s("%d", &minutes);
+	printf("enter seconds: ");
+	scanf_s("%d", &seconds);
+
+	secs(&hours, &minutes, &seconds);
+	printf("total number of seconds: %d", seconds);
+}
+
+void secs(int* h, int* m, int* s) {
+	*s += (*h * 3600 + *m * 60);
+}
