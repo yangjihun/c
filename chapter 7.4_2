@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+void liquid(int* gallons, int* quarts, int* pints, int* cups);
+
+void main() {
+	int gallons, quarts, pints, cups;
+	/* input data */
+	printf("cups: ");
+	scanf_s("%d", &cups);
+	/* function */
+	liquid(&gallons, &quarts, &pints, &cups);
+	/* print */
+	printf("gallon: %d, quarts: %d, pints: %d, cups: %d", gallons, quarts, pints, cups);
+}
+
+void liquid(int* gallons, int* quarts, int* pints, int* cups) {
+	*gallons = *cups / 16;
+	*quarts = *cups % 16 / 4;
+	*pints = *cups % 16 % 4 / 2;
+	*cups = *cups % 16 % 4 % 2;
+}
