@@ -1,0 +1,21 @@
+// 12.1 1a
+#include <stdio.h>
+
+struct{
+	int month;
+	int day;
+	int year;
+} DATE;
+
+void main() {
+	printf("enter month: ");
+	scanf_s("%d", &DATE.month);
+	printf("enter day: ");
+	scanf_s("%d", &DATE.day);
+	printf("enter year: ");
+	scanf_s("%d", &DATE.year);
+
+	printf("month: %d\n", DATE.month);
+	printf("day: %d\n", DATE.day);
+	printf("year: %d\n", DATE.year);
+}
