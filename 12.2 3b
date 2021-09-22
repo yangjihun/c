@@ -1,0 +1,26 @@
+// 12.2 3b
+#include <stdio.h>
+
+struct EMPLOYEE {
+	int identification_number;
+	char last_name[20];
+	float pay_rate;
+	float hours_worked;
+};
+
+void main() {
+	int i;
+	float total_pay;
+	struct EMPLOYEE employee[6] = {
+		{3462,"Jones",4.62,40.0},
+		{6793,"Robbins",5.83,38.5},
+		{6985,"Smith",5.22,45.5},
+		{7834,"Swain",6.89,40.0},
+		{8867,"Timmins",6.43,35.5},
+		{9002,"Williams",4.75,42.0}
+	};
+	for (i = 0; i < 6; i = i + 1) {
+		total_pay = employee[i].pay_rate * employee[i].hours_worked;
+		printf("ID Number:%d\tName:%s\tPay Rate:%f\tHours Worked:%f\ttotal gross pay = %f\n", employee[i].identification_number, employee[i].last_name, employee[i].pay_rate, employee[i].hours_worked, total_pay);
+	}
+}
