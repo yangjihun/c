@@ -1,0 +1,23 @@
+// 12.1 1b
+#include <stdio.h>
+
+struct {
+	char stock_name[20];
+	float earning_per_share;
+	float price_to_earnings_ratio;
+} STOCK;
+
+void main() {
+	float anticipated_stock_price;
+	int i;
+	for (i = 0; i < 5; i = i + 1) {
+		printf("enter stock name: ");
+		scanf_s("%s", STOCK.stock_name, sizeof(STOCK.stock_name));
+		printf("enter earning per share: ");
+		scanf_s("%f", &STOCK.earning_per_share);
+		printf("enter price to earnings ratio: ");
+		scanf_s("%f", &STOCK.price_to_earnings_ratio);
+		anticipated_stock_price = STOCK.earning_per_share * STOCK.price_to_earnings_ratio;
+		printf("The anticipated price for a share of %s is (%f)*(%f) = $%f.\n", STOCK.stock_name, STOCK.earning_per_share, STOCK.price_to_earnings_ratio, anticipated_stock_price);
+	}
+}
