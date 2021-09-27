@@ -1,4 +1,16 @@
 #include <stdio.h>
+
+/*
+	Author: Yang JiHoon / 202031527
+	Date: 2021-09-27
+	Course: Problem Solving Methods
+
+	Summary of File:
+		Declare a single structure type suitable for a car record. Using the structure, enter data into an array of five structures.
+		The program creates a report listing each car number and the miles per gallon achieved by the car.
+		At the end of the report, include the average miles per gallon achieved by the five cars.
+*/
+
 #define NUM 5  //define number:5
 
 struct CAR {  //declare car_number, miles_driven, gallons_used in CAR struct
@@ -7,6 +19,16 @@ struct CAR {  //declare car_number, miles_driven, gallons_used in CAR struct
 	int gallons_used;
 } car[NUM];
 
+/*
+	int main()
+
+	Return value: Nothing
+
+	Description:
+		This function enters values into Car structure, and create a report listing each car number and the miles per gallon achieved by the car.
+		At the end of the report, include the average miles per gallon achieved by the five cars.
+
+*/
 int main() {
 	/* declare value */
 	int i;
