@@ -1,0 +1,36 @@
+#include <stdio.h>
+#define NUM 5  //define number:5
+
+struct CAR {  //declare car_number, miles_driven, gallons_used in CAR struct
+	int car_number;
+	int miles_driven;
+	int gallons_used;
+} car[NUM];
+
+int main() {
+	/* declare value */
+	int i;
+	int average = 0;
+	int miles_per_gallon[5];
+	/* enter value into Car structure and calculate miles per gallon */
+	for (i = 0; i < NUM; i = i + 1) {
+		printf("Car Number: ");
+		scanf_s("%d", &car[i].car_number);
+		printf("Miles Driven: ");
+		scanf_s("%d", &car[i].miles_driven);
+		printf("Gallons Used: ");
+		scanf_s("%d", &car[i].gallons_used);
+		printf("\n");
+		miles_per_gallon[i] = car[i].miles_driven / car[i].gallons_used;
+	}
+	/* calculate average */
+	for (i = 0; i < NUM; i = i + 1) {
+		average += miles_per_gallon[i];
+	}
+	average /= NUM;
+	/* print list and average */
+	for (i = 0; i < NUM; i = i + 1) {
+		printf("%d\t%d\n", car[i].car_number, miles_per_gallon[i]);
+	}
+	printf("Average miles per gallon: %d\n", average);
+}
