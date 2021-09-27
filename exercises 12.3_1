@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+/*
+	Author: Yang JiHoon / 202031527
+	Date: 2021-09-27
+	Course: Problem Solving Methods
+
+	Summary of File:
+		Determine the number of days from the date 1/1/2000 for any date passed as a structure
+*/
+struct DATE{  //declare date
+	int month;
+	int day;
+	int year;
+};
+/*
+	int Days(struct DATE*)
+	
+	Return value: Nothing
+
+	Description:
+		This function count the number of day from the date 1/1/2000 for passed as a Date structure
+*/
+int Days(struct DATE*);
+/*
+	int main()
+
+	Return value: Nothing
+
+	Description:
+		This function enters values into Dats structure, execute Days function, and print day
+*/
+int main() {
+	struct DATE date;
+	/* Input date into Date structure */
+	printf("year: ");
+	scanf_s("%d", &date.year);
+	printf("month: ");
+	scanf_s("%d", &date.month);
+	printf("day: ");
+	scanf_s("%d", &date.day);
+	Days(&date);  //execute Days function
+	printf("%d", date.day);  //print days
+}
+
+int Days(struct DATE* d) {  // count day
+	d->year = (d->year - 2000) * 360;
+	d->month = (d->month - 1) * 30;
+	d->day = d->day - 1;
+	d->day += (d->year + d->month);
+}
