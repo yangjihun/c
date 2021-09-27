@@ -1,0 +1,32 @@
+#include <stdio.h>
+#define NUM 2
+
+struct DATE {
+	int year;
+	int month;
+	int day;
+}date[NUM];
+
+int recent();
+
+int main() {
+	int i;
+	int day[NUM];
+	for (i = 0; i < NUM; i = i + 1) {  //declare value
+		printf("enter year in date[%d]: ", i);
+		scanf_s("%d", &date[i].year);
+		printf("enter month in date[%d]: ", i);
+		scanf_s("%d", &date[i].month);
+		printf("enter day in date[%d]: ", i);
+		scanf_s("%d", &date[i].day);
+		printf("\n");
+		day[i] += (date[i].year * 360 + date[i].month * 30 + date[i].day);
+	}
+	if (day[0] > day[1]) {
+		printf("%d/%d/%d", date[0].month, date[0].day, date[0].year);
+	}
+	else if (day[0] < day[1]) {
+		printf("%d/%d/%d", date[1].month, date[1].day, date[1].year);
+	}
+
+}
