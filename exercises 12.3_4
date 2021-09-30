@@ -1,3 +1,11 @@
+/*
+	Author: Yang JiHoon / 202031527
+	Date: 2021-09-30
+	Course: Problem Solving Mothods
+
+	Summary of File:
+		Input two date, then print recent date
+*/
 #include <stdio.h>
 #define NUM 2
 
@@ -5,11 +13,12 @@ struct DATE {
 	int year;
 	int month;
 	int day;
-}date[NUM];
+};
 
-int recent();
+int recent(struct DATE*, int day);
 
 int main() {
+	struct DATE date[NUM];
 	int i;
 	int day[NUM];
 	for (i = 0; i < NUM; i = i + 1) {  //declare value
@@ -20,13 +29,24 @@ int main() {
 		printf("enter day in date[%d]: ", i);
 		scanf_s("%d", &date[i].day);
 		printf("\n");
-		day[i] += (date[i].year * 360 + date[i].month * 30 + date[i].day);
+		day[i] += (date[i].year * 360 + date[i].month * 30 + date[i].day);  //Sum total day
 	}
+	recent(date, day);  //execute Recent function
+}
+
+/*
+	int recent(struct DATE date[], int day[])
+
+	Return value: Nothing
+
+	Description:
+		This function compare which date is more recent and print the recent date.
+*/
+int recent(struct DATE date[], int day[]) {
 	if (day[0] > day[1]) {
 		printf("%d/%d/%d", date[0].month, date[0].day, date[0].year);
 	}
 	else if (day[0] < day[1]) {
 		printf("%d/%d/%d", date[1].month, date[1].day, date[1].year);
 	}
-
 }
