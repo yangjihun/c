@@ -1,50 +1,47 @@
 #include <stdio.h>
 #include <string.h>
-#define MAX 5
+#define NUM 5
+#define MAX 20
 
 struct DATASET {
-	char name[20];
+	char name[MAX];
 	int age;
-	char hobby[20];
+	char hobby[MAX];
 };
 
 struct INDEX {
-	char name[20];
+	char name[MAX];
 };
 
-int copy(struct DATASET[], struct index[]);
+int copy(struct DATASET[]);
 
 int main() {
-	struct DATASET dataset[MAX];
-	struct INDEX index[MAX];
-	char name[20];
+	struct DATASET dataset[NUM];
+	struct INDEX index[NUM];
+	char name[MAX];
 	int i;
 	int j;
 	char n;
-	for (i = 0; i < MAX; i = i + 1) {
+	for (i = 0; i < NUM; i = i + 1) {
 		printf("name: ");
-		scanf_s("%s", dataset[i].name, 20);
+		scanf_s("%s", dataset[i].name, MAX);
 		printf("age: ");
 		scanf_s("%d", &dataset[i].age);
 		printf("hobby: ");
-		scanf_s("%s", dataset[i].hobby, 20);
+		scanf_s("%s", dataset[i].hobby, MAX);
 	}
 	/* store into index */
-	for (i = 0; i < MAX; i = i + 1) {
+	for (i = 0; i < NUM; i = i + 1) {
 		dataset[i].name == index[i].name;
 	}
 	/* input name */
 	printf("enter name: ");
-	scanf_s("%s", name, 20);
-	printf("\n%s\n", name);
-	for (i = 0; i < MAX; i = i + 1) {
-		printf("\ni\n");
-		copy(&dataset[i], &index[i]);
+	scanf_s("%s", name, MAX);
+	for (i = 0; i < NUM; i = i + 1) {
+		copy(&dataset[i]);
 	}
-	
-	//printf("%s", index[3].name);
 }
 
-int copy(struct DATASET* dataset, struct INDEX* index) {
-	printf("%d", dataset.age);
+int copy(struct DATASET* dataset) {
+	printf("%s\t%d\t%s\n", (*dataset).name, (*dataset).age, (*dataset).hobby);
 }
