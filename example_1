@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int match(char str);
+
+int main() {
+	char str[100] = "A thief named hong gil dong lived with friends named hong gil dong.";
+	char search_string[100];
+	printf("search string: ");
+	gets(search_string);
+	match(str, search_string);
+}
+
+int match(char str[], char search_string[]) {
+	int cursor = 0, i = 0;
+	while (str[cursor] != '\0') {
+		if (str[cursor] == search_string[i]) {
+			i += 1;
+		}
+		if (i == strlen(search_string)) {
+			printf("%d\n", cursor);
+			i = 0;
+		}
+		cursor += 1;
+	}
+}
+
+int strlen(char str[]) {
+	int i = 0;
+	while (str[i] != '\0') {
+		i += 1;
+	}
+	return i;
+}
