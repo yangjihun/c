@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+#define MAX 5
+
+struct DATASET {
+	char name[20];
+	int age;
+	char hobby[20];
+};
+
+struct INDEX {
+	char name[20];
+};
+
+void copy(struct DATASET[MAX], struct index[MAX]);
+
+void main() {
+	struct DATASET dataset[MAX];
+	struct INDEX index[MAX];
+	char name[20];
+	int i;
+	int j;
+	char n;
+	for (i = 0; i < MAX; i = i + 1) {
+		printf("name: ");
+		scanf_s("%s", dataset[i].name, strlen(dataset[i].name)); 
+		printf("age: ");
+		scanf_s("%d", &dataset[i].age);
+		printf("hobby: ");
+		scanf_s("%s", dataset[i].hobby, strlen(dataset[i].hobby));
+	}
+	copy(dataset, index);  //copy dataset into index
+	printf("enter name: ");
+	scanf_s("%s", name, 20);
+	printf("%s\n", name);
+	/* print */
+	for (i = 0; i < MAX; i = i + 1) {
+		//if (find!=NULL) {
+			//printf("%s\n", dataset[i].name);
+		printf("%s", strstr(name, index[i].name));
+		//}
+	}
+}
+
+void copy(struct DATASET dataset[], struct INDEX index[]) {
+	int i;
+	for (i = 0; i < MAX; i = i + 1) {
+		(index[i]).name == (dataset[i]).name;
+	}
+}
