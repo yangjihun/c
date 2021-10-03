@@ -23,18 +23,18 @@ int main() {
 	int i;
 	for (i = 0; i < NUM; i = i + 1) {
 		printf("name: ");
-		scanf_s("%s", dataset[i].name, MAX);
+		scanf_s("%s%*c", dataset[i].name, MAX);
 		printf("age: ");
-		scanf_s("%d", &dataset[i].age);
+		scanf_s("%d%*c", &dataset[i].age);
 		printf("hobby: ");
-		scanf_s("%s", dataset[i].hobby, MAX);
+		scanf_s("%s%*c", dataset[i].hobby, MAX);
 	}
 	/* execute Copy function */
 	copy(dataset, index);
 	/* input name */
 	printf("enter name: ");
-	scanf_s("%s", name, MAX);
-	search(&dataset[i], &index[i], name);
+	gets(name);
+	search(dataset, index, name);
 }
 
 int copy(struct DATASET dataset[], struct INDEX index[]) {
@@ -45,18 +45,26 @@ int copy(struct DATASET dataset[], struct INDEX index[]) {
 	}
 }
 
-int search(struct DATASET* dataset[], struct INDEX* index[], char name[]) {
-	int i = 0, cursor = 0, turn = 0;
+int search(struct DATASET dataset[], struct INDEX index[], char name[]) {
+	int i = 0, cursor = 0, turn = 0, j = 0;
 	for (turn = 0; turn < NUM; turn = turn + 1) {
-		while (name[i] != '\0') {
-			if (name[cursor] == index[turn]->name[i]) {
-				turn += 1;
+		while (name[cursor] != '\0') {
+			if (name[cursor] == index[turn].name[i]) {
+				j = cursor;
+				while (name[j] == index[turn].name[i]) {
+					i += 1;
+					j += 1;
+					if (i == strlen(index[turn].name)) {
+						printf("%s\t%d\t%s\n", dataset[turn].name, dataset[turn].age, dataset[turn].hobby);
+						break;
+					}
+				}
+				i = 0;
+				j = 0;
 			}
-			if (i == strlen(index[turn]->name)) {
-				printf("%s\t%d\t%s\n", dataset[turn]->name, dataset[turn]->age, dataset[turn]->hobby);
-				turn = 0;
-			}
-			i += 1;
+			i = 0;
+			j = 0;
+			cursor += 1;
 		}
 	}
 }
