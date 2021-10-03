@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
 #define NUM 5
@@ -10,18 +11,16 @@ struct DATASET {
 };
 
 struct INDEX {
-	char name[MAX];
+	char name[MAX - 1];
 };
 
-int copy(struct DATASET[]);
+int search(struct DATASET* dataset[], struct INDEX* index[], char name[]);
 
 int main() {
 	struct DATASET dataset[NUM];
 	struct INDEX index[NUM];
 	char name[MAX];
 	int i;
-	int j;
-	char n;
 	for (i = 0; i < NUM; i = i + 1) {
 		printf("name: ");
 		scanf_s("%s", dataset[i].name, MAX);
@@ -30,18 +29,34 @@ int main() {
 		printf("hobby: ");
 		scanf_s("%s", dataset[i].hobby, MAX);
 	}
-	/* store into index */
-	for (i = 0; i < NUM; i = i + 1) {
-		dataset[i].name == index[i].name;
-	}
+	/* execute Copy function */
+	copy(dataset, index);
 	/* input name */
 	printf("enter name: ");
 	scanf_s("%s", name, MAX);
+	search(&dataset[i], &index[i], name);
+}
+
+int copy(struct DATASET dataset[], struct INDEX index[]) {
+	int i;
+	/* store into index */
 	for (i = 0; i < NUM; i = i + 1) {
-		copy(&dataset[i]);
+		strcpy(index[i].name, dataset[i].name);
 	}
 }
 
-int copy(struct DATASET* dataset) {
-	printf("%s\t%d\t%s\n", (*dataset).name, (*dataset).age, (*dataset).hobby);
+int search(struct DATASET* dataset[], struct INDEX* index[], char name[]) {
+	int i = 0, cursor = 0, turn = 0;
+	for (turn = 0; turn < NUM; turn = turn + 1) {
+		while (name[i] != '\0') {
+			if (name[cursor] == index[turn]->name[i]) {
+				turn += 1;
+			}
+			if (i == strlen(index[turn]->name)) {
+				printf("%s\t%d\t%s\n", dataset[turn]->name, dataset[turn]->age, dataset[turn]->hobby);
+				turn = 0;
+			}
+			i += 1;
+		}
+	}
 }
