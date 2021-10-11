@@ -1,0 +1,57 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#define Array 3
+#define MAX 50
+
+int i;
+struct INFO {
+	char name[MAX];
+	int age;
+	char hobby[MAX];
+};
+
+int sort(struct info[]);
+
+int main() {
+	struct INFO info[Array];
+	/* Enter data in Info structure */
+	for (i = 0; i < Array; i++) {
+		printf("enter info[%d] name: ", i);
+		scanf_s("%s", info[i].name, MAX);
+		printf("enter info[%d] age: ", i);
+		scanf_s("%d%*c", &info[i].age);
+		printf("enter info[%d] hobby: ", i);
+		gets(info[i].hobby);
+		printf("\n");
+	}
+	/* execute Add function */
+	sort(info);
+	/* Print result */
+	for (i = 0; i < Array; i++) {
+		printf("info[%d] name: %s\n", i, info[i].name);
+		printf("info[%d] age: %d\n", i, info[i].age);
+		printf("info[%d] hobby: %s\n", i, info[i].hobby);
+		printf("\n");
+	}
+}
+
+int sort(struct INFO info[]) {
+	int num;
+	char word[MAX];
+	for (i = 0; i < Array; i++) {
+		for (int j = i; j < Array; j++) {
+			if (info[i].age > info[j].age) {
+				num = info[i].age;
+				info[i].age = info[j].age;
+				info[j].age = num;
+				strcpy(word, info[i].name);
+				strcpy(info[i].name, info[j].name);
+				strcpy(info[j].name, word);	
+				strcpy(word, info[i].hobby);
+				strcpy(info[i].hobby, info[j].hobby);
+				strcpy(info[j].hobby, word);
+			}
+		}
+	}
+}
